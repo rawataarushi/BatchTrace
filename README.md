@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BatchTrace - Essential Oil Batch Traceability System
+
+## Overview
+
+BatchTrace is a minimal web-based batch traceability management system designed for essential oil producers. It helps track oil batches from harvest through distillation to dispatch, with integrated lab certificate management.
+
+## Features
+
+- **Batch Management**: Add, edit, and delete batch records
+- **Batch Tracking**: Track each batch with harvest date, distillation date, plant variety, and yield
+- **Lab Certificate Linking**: Associate lab test certificate file names with batches
+- **Dispatch Management**: Mark batches as dispatched and record buyer information
+- **Sortable Records**: Sort batches by plant variety, harvest date, or yield
+- **Summary Statistics**: View total, pending, and dispatched batch counts
+- **Responsive Design**: Fully responsive interface works on desktop, tablet, and mobile
+- **Data Persistence**: All records stored in browser's local storage
+
+## Tech Stack
+
+- **Framework**: Next.js 16+ with App Router
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Storage**: Browser Local Storage (JSON)
+- **No Backend Required**: Standalone web application
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 16+ and npm
+
+### Installation
 
 ```bash
+# Navigate to the project directory
+cd batch-app
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app will be available at `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Usage Guide
 
-To learn more about Next.js, take a look at the following resources:
+### Adding a Batch
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Navigate to **Dashboard** from the navigation menu
+2. Click **+ Add New Batch**
+3. Fill in the required fields:
+   - **Plant Variety**: e.g., Lavender, Rose, Eucalyptus
+   - **Harvest Date**: Date when plants were harvested
+   - **Distillation Date**: Date when oil was distilled
+   - **Yield (ml)**: Amount of oil produced
+   - **Lab Certificate File Name** (optional): Reference name for certificate file
+4. Click **Save Batch**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Viewing Batches
 
-## Deploy on Vercel
+- All batches appear in a sortable table on the Dashboard
+- Click on column headers to sort by Plant Variety, Harvest Date, or Yield
+- View batch status (Pending or Dispatched) at a glance
+- Summary statistics shown below the table
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Editing a Batch
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Click the **Edit** button on any batch row
+2. Modify the batch details
+3. Click **Update Batch** to save changes
+
+### Marking Batch as Dispatched
+
+1. Click the **Edit** button on a batch
+2. Click **Mark as Dispatched**
+3. Enter the buyer name in the prompt
+4. The batch status changes to "Dispatched"
+
+### Deleting a Batch
+
+1. Click the **Delete** button on any batch row
+2. Confirm deletion when prompted
+
+## Project Structure
+
+```
+batch-app/
+├── app/
+│   ├── page.tsx           # Home page
+│   ├── layout.tsx         # Root layout
+│   ├── globals.css        # Global styles
+│   ├── dashboard/
+│   │   └── page.tsx       # Dashboard page
+│   ├── about/
+│   │   └── page.tsx       # About page
+│   └── help/
+│       └── page.tsx       # Help page
+├── components/
+│   ├── Navbar.tsx         # Navigation component
+│   ├── Hero.tsx           # Hero section component
+│   ├── Card.tsx           # Card component
+│   └── Footer.tsx         # Footer component
+├── public/                # Static assets
+├── package.json           # Dependencies
+├── tsconfig.json          # TypeScript config
+├── tailwind.config.ts     # Tailwind configuration
+└── next.config.ts         # Next.js configuration
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+
+## Browser Support
+
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- Any modern browser supporting ES2020
+
+## License
+
+MIT
